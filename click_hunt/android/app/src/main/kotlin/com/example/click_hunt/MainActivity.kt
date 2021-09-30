@@ -1,4 +1,4 @@
-package com.example.quiz3
+package com.example.click_hunt
 
 import io.flutter.embedding.android.FlutterActivity
 

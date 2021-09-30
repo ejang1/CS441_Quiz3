@@ -1,4 +1,4 @@
-# quiz3
+# click_hunt
 
 A new Flutter project.
 
