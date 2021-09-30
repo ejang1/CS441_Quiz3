@@ -13,9 +13,36 @@ class ClickHunt extends StatefulWidget {
 
 class _ClickHuntState extends State<ClickHunt> {
   double sizeDefault = 10;
-  double rightWeapon = 10;
-  double wrongWeapon = 1;
   int popCount = 0;
+  double countDown = 30;
+  double damage(){
+    if (rnd == 0){
+      if (wps.weapontype == "water") return 10;
+      else if (wps.weapontype == "leaf") return 0;
+      else return 1;
+    }
+    else if (rnd == 1){
+      if (wps.weapontype == "thunder") return 10;
+      else if (wps.weapontype == "fire") return 0;
+      else return 1;
+    }
+    else if (rnd == 2){
+      if (wps.weapontype == "leaf") return 10;
+      else if (wps.weapontype == "thunder") return 0;
+      else return 1;
+    }
+    else if (rnd == 3){
+      if (wps.weapontype == "rock") return 10;
+      else if (wps.weapontype == "water") return 0;
+      else return 1;
+    }
+    else{
+      if (wps.weapontype == "fire") return 10;
+      else if (wps.weapontype == "rock") return 0;
+      else return 1;
+    }
+  }
+
   WeaponController wps = new WeaponController("none");
   var rnd = new Random().nextInt(5);
   @override
@@ -42,7 +69,7 @@ class _ClickHuntState extends State<ClickHunt> {
             child: MaterialButton(
               onPressed: (){
                 setState(() {
-                  if(sizeDefault < 190) sizeDefault += rightWeapon;
+                  if(sizeDefault < 190) sizeDefault += damage();
                   else{
                     sizeDefault = 10;
                     popCount ++;
