@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'monster.dart';
+import 'weapons.dart';
+import 'weapon_controller.dart';
 class ClickHunt extends StatefulWidget {
   const ClickHunt({Key? key}) : super(key: key);
 
@@ -8,9 +10,12 @@ class ClickHunt extends StatefulWidget {
 }
 
 class _ClickHuntState extends State<ClickHunt> {
-
   double sizeDefault = 10;
+  double rightWeapon = 10;
+  double wrongWeapon = 1;
   int popCount = 0;
+  WeaponController wps = new WeaponController("none");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +27,7 @@ class _ClickHuntState extends State<ClickHunt> {
       body: ListView(
         children: <Widget>[
           Text(
-              "Pop it!",
+              "Touch to Hunt!",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20,
@@ -35,7 +40,7 @@ class _ClickHuntState extends State<ClickHunt> {
             child: MaterialButton(
               onPressed: (){
                 setState(() {
-                  if(sizeDefault < 190) sizeDefault += 3;
+                  if(sizeDefault < 190) sizeDefault += wrongWeapon;
                   else{
                     sizeDefault = 10;
                     popCount ++;
@@ -43,43 +48,90 @@ class _ClickHuntState extends State<ClickHunt> {
                 });
               },
               child: CustomPaint(
-                painter: OpenPainter(sizeDefault),
+                painter: Monster(sizeDefault),
               ),
             ),
           ),
           Text(
-            "POP COUNT:: ${popCount}",
+            "HUNT COUNT:: ${popCount}",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20,
               height: 2,
             ),
           ),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            "Current Weapon:: ${wps.weapontype}",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              height: 2,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Weapons(
+                type: 1,
+                onPress: (){
+                  setState(() {
+                    wps.weapontype="fire";
+                  });
+                },
+              ),
+              Weapons(
+                type: 2,
+                onPress: (){
+                  setState(() {
+                    wps.weapontype="water";
+                  });
+                },
+              ),
+              Weapons(
+                type: 3,
+                onPress: (){
+                  setState(() {
+                    wps.weapontype="rock";
+                  });
+                },
+              ),
+              Weapons(
+                type: 4,
+                onPress: (){
+                  setState(() {
+                    wps.weapontype="thunder";
+                  });
+                },
+              ),
+              Weapons(
+                type: 5,
+                onPress: (){
+                  setState(() {
+                    wps.weapontype="leaf";
+                  });
+                },
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
           TextButton(
               onPressed: (){
                 setState(() {
                   popCount = 0;
                   sizeDefault = 10;
+                  wps.weapontype = "none";
                 });
               }, child: Text("RESET!"))
         ],
       )
     );
   }
-}
-
-class OpenPainter extends CustomPainter{
-  OpenPainter(this.csize);
-  double csize;
-  @override
-  void paint(Canvas canvas, Size size) {
-    // TODO: implement paint
-    var paint1 = Paint()
-      ..color = Color(0xff63aa65)
-      ..style = PaintingStyle.fill;
-    canvas.drawCircle(Offset(0,0), csize, paint1);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
