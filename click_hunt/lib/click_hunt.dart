@@ -1,3 +1,5 @@
+import 'dart:math';
+import 'package:click_hunt/constant.dart';
 import 'package:flutter/material.dart';
 import 'monster.dart';
 import 'weapons.dart';
@@ -15,7 +17,7 @@ class _ClickHuntState extends State<ClickHunt> {
   double wrongWeapon = 1;
   int popCount = 0;
   WeaponController wps = new WeaponController("none");
-
+  var rnd = new Random().nextInt(5);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,15 +42,16 @@ class _ClickHuntState extends State<ClickHunt> {
             child: MaterialButton(
               onPressed: (){
                 setState(() {
-                  if(sizeDefault < 190) sizeDefault += wrongWeapon;
+                  if(sizeDefault < 190) sizeDefault += rightWeapon;
                   else{
                     sizeDefault = 10;
                     popCount ++;
+                    rnd = new Random().nextInt(5);
                   }
                 });
               },
               child: CustomPaint(
-                painter: Monster(sizeDefault),
+                painter: Monster(sizeDefault,weaponKinds[rnd]),
               ),
             ),
           ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'weapon_controller.dart';
 
 class Weapons extends StatelessWidget {
   Weapons({required this.type,required this.onPress});
