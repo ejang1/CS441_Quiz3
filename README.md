@@ -1,2 +1,16 @@
-# CS441_Quiz3
-Description For the third project, let's do some graphics.  For both iOS and Android, you can have a derived class from a view -- and how the graphical content of that view are determined is from a method you can implement.   The phone needs to refresh the screen, and does call backs to code to get the contents of each window/view -- override that, and you can put whatever you want on screen.  The graphics for this assignment do not need to be complex or fancy; the goal is to get you familiar with how to draw on the screen.  By keeping it simple.... this should be code that you can implement yourself from the ground up, and not an astonishing 3D game that you download from the Internet.  Play around.  Figure out how to draw lines, text, squares and rectangles, or render a PNG/JPG onto the screen.  For upcoming assignments, you'll need to move things around with animation, so that your game can have monsters chasing the player, or whatever else you think of.
+# quiz3
+
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
